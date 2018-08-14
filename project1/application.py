@@ -27,12 +27,6 @@ db = scoped_session(sessionmaker(bind=engine))
 
 @app.route("/")
 def index():
-    #res = requests.get("https://www.goodreads.com/book/review_counts.json", params={"key": "Vf6o1vG8MZ48NSMMDn622A", "isbns": "9781632168146"})
-    #bookDict = res.json()
-    #book = bookDict.get('books')
-    #print(book)
-    #print(res.json())
-    #return render_template("index.html", book=book)
     return render_template("search.html")
 
 @app.route("/books/<int:book_id>")
