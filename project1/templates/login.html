@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Login
+{% endblock %}
+
+{% block body %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+     {% for message in messages %}
+     {{ message }}
+    {% endfor %}
+
+  {% endif %}
+{% endwith %}
+
+<form class="dopeForm" id="loginForm" action="/create_session" method="post">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="username" class="form-control" id="username" name="username" placeholder="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+<p class="create-account-callout mt-3">
+New to CS50 Book App?
+<a href="/join">Create an account</a>.
+</p>
+
+{% endblock %}

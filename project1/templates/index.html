@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Books
+{% endblock %}
+
+{% block body %}
+    <h1>Index bruh</h1>
+    <ul>
+        <li>id: {{ book[0]['id'] }}</li>
+        <li>isbn: {{ book[0]['isbn'] }}</li>
+        <li>isbn13: {{ book[0]['isbn13'] }}</li>
+        <li>ratings count: {{ book[0]['ratings_count'] }}</li>
+
+        <li>reviews_count: {{ book[0]['reviews_count'] }}</li>
+        <li>text_reviews_count: {{ book[0]['text_reviews_count'] }}</li>
+        <li>work_reviews_count: {{ book[0]['work_reviews_count'] }}</li>
+        <li>work_ratings_count: {{ book[0]['work_ratings_count'] }}</li>
+        <li>work_text_reviews_count: {{ book[0]['work_text_reviews_count'] }}</li>
+        <li>average rating: {{ book[0]['average_rating'] }}</li>
+    </ul>
+
+
+{% endblock %}

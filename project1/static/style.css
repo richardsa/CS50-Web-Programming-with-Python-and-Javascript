@@ -1,0 +1,31 @@
+body {
+  margin-top: 75px;
+}
+#results {
+    padding: 50px 10px;
+}
+h3.resultTitle {
+  margin-bottom: 0px;
+}
+
+.result {
+  padding: 10px;
+  width:100%;
+}
+
+.result:hover,
+.result:active,
+.result:focus {
+  background-color: #F1F1F1;
+}
+
+.form-control {
+    margin-right: 10px;
+}
+
+.dopeForm {
+    margin: 10px;
+    padding: 25px;
+    border: 1px solid lightgrey;
+    border-radius: 10px;
+}

@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Join
+{% endblock %}
+
+{% block body %}
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+     {% for message in messages %}
+     {{ message }}
+    {% endfor %}
+
+  {% endif %}
+{% endwith %}
+<h3 class="text-center">Create an Account</h3>
+<form class="dopeForm" id="joinForm" action="/create" method="post">
+  <div class="form-group">
+    <label for="username">Username</label>
+    <input type="username" class="form-control" id="username" name="username" placeholder="username">
+  </div>
+  <div class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+
+{% endblock %}

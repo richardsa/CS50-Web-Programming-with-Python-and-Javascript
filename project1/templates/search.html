@@ -1,0 +1,37 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Search
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+            <h1>Search for books...</h1>
+            <form id="search-form">
+              <div class="form-row">
+                <div class="col-md-7">
+                  <label for="textSearch" class="sr-only">Book Search</label>
+                  <input type="text" class="form-control" id="textSearch" name="textSearch" aria-describedby="textSearch" placeholder="Enter search terms">
+                </div>
+                <div class="col-md-3">
+                  <select class="form-control" name="searchFieldSelector">
+                      <option name="searchFieldSelector" id="guidedField_0" value="ISBN">ISBN</option>
+                      <option name="searchFieldSelector" id="guidedField_1" value="TI">Title</option>
+                      <option name="searchFieldSelector" id="guidedField_2" value="AU">Author</option>
+                  </select>
+
+                </div>
+                <div class="col-md-2">
+                  <button type="submit" class="btn btn-primary book-form">Search</button>
+                </div>
+
+              </div>
+
+            </form>
+
+            <div class="row" id="results">
+
+            </div>
+    </div>
+
+{% endblock %}

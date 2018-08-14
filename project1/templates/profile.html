@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+   Profile
+{% endblock %}
+
+{% block body %}
+<p>
+    Hi  {{ user['username'] }}
+    <div class="reviews">
+        {% if not userReviews %}
+      Review your first book to see your user reviews!
+       {% endif %}
+
+    {% if userReviews %}
+        <h3>Your Reviews</h3>
+         {% for review in userReviews %}
+          <div class='result'>
+            <a href="books/{{ review.book_id }}  ">
+                <h3> {{ review.title }} </h3>
+            </a>
+            <button type="button" class="btn btn-primary">{{ review.rating }}</button>
+            {{ review.review }}
+
+          </div>
+        {% endfor %}
+
+    {% endif %}
+
+
+    </div>
+</p>
+
+
+{% endblock %}

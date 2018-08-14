@@ -1,0 +1,41 @@
+<!-- header -->
+<header class="site-header" role="banner">
+  <!-- navbar -->
+  <div class="navbar-wrapper">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <i class="fa fa-bars fa-toggle fa-lg" aria-hidden="true"></i>
+          </button>
+          <a class="navbar-brand" href="/">CS50 Book App</a>
+
+        </div>
+        <!-- navbar-header -->
+        <!-- If the menu (WP admin area) is not set, then the "menu_class" is applied to "container". In other words, it overwrites the "container_class". Ref: http://wordpress.org/support/topic/wp_nav_menu-menu_class-usage-bug?replies=4 -->
+        <nav class="navbar-collapse collapse">
+          <ul id="menu-primary" class="nav navbar-nav navbar-right">
+            <li class="menu-item"><a title="Home" href="/">Home</a></li>
+            <li class="menu-item"><a title="Search" href="/search">Search</a></li>
+            {% if session['user_id'] %}
+              <li class="menu-item "><a title="profile" href="/profile">Profile</a></li>
+              <li class="menu-item "><a title="logout" href="/logout">Logout</a></li>
+            {% endif %}
+            {% if not session['user_id'] %}
+              <li class="menu-item "><a title="logout" href="/login">Login</a></li>
+            {% endif %}
+
+          </ul>
+        </nav>
+
+      </div>
+      <!-- container -->
+
+
+    </div>
+    <!--navbar -->
+  </div>
+  <!-- navbar wrapper -->
+</header>
+<!-- end header -->
