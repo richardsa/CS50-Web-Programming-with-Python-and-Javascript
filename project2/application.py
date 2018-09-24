@@ -1,6 +1,7 @@
 import os
+import requests
 
-from flask import Flask
+from flask import Flask, jsonify, render_template, request
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
@@ -10,4 +11,4 @@ socketio = SocketIO(app)
 
 @app.route("/")
 def index():
-    return "Project 2: TODO"
+    return render_template("index.html")
