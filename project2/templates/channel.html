@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ chatChannel[0].channelname }} Channel
+{% endblock %}
+
+{% block body %}
+    <h1>{{ chatChannel[0].channelname }} Channel</h1>
+    <form data-channel="{{ channelName }}" class="dopeForm form-inline" id="chatForm" action="" method="">
+        <input type="text" id="chat-text" class="form-control">
+        <input type="submit" value="button" class="btn btn-primary">
+    </form>
+    <ul id="chats">
+         {% for chats in chatChannel[0].chats %}
+          <li>
+            Name  {{ chats.username }} and message {{ chats.message }}
+
+          </li>
+
+
+
+
+        {% endfor %}
+    </ul>
+{% endblock %}

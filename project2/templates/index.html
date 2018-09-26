@@ -6,5 +6,12 @@
 
 {% block body %}
     <h1>Project 2: TODO</h1>
+    {% for channel in channels %}
+          <div class='result'>
+            <a href="channel/{{ channel.channelname }}  ">
+                <h3> {{ channel.channelname  }} </h3>
+            </a>
+          </div>
+        {% endfor %}
 
 {% endblock %}
