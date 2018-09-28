@@ -26,7 +26,5 @@ def vote(data):
     channel = data["channel"]
     displayName = data["displayName"]
     chatChannel = [item for item in channels if item["channelname"] == channel]
-    print(chatChannel[0])
-    print(chatChannel[0]['chats'])
     chatChannel[0]['chats'].append({"username": displayName, "message": chatText})
     emit("display chats", {"chatText": chatText, "displayName": displayName}, broadcast=True)
