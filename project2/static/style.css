@@ -5,4 +5,9 @@ body {
 #chats {
     border: 1px solid black;
     height: 250px;
+    overflow-y:auto;
+}
+
+li#previous-room {
+  display: none;
 }

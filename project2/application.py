@@ -21,10 +21,23 @@ def channel(channelName):
     return render_template("channel.html", chatChannel=chatChannel)
 
 @socketio.on("submit chat")
-def vote(data):
+def chat(data):
     chatText = data["chatText"]
     channel = data["channel"]
     displayName = data["displayName"]
     chatChannel = [item for item in channels if item["channelname"] == channel]
     chatChannel[0]['chats'].append({"username": displayName, "message": chatText})
     emit("display chats", {"chatText": chatText, "displayName": displayName}, broadcast=True)
+
+@socketio.on("create room")
+def create(data):
+    channel = data["channel"]
+    chatChannel = [item for item in channels if item["channelname"] == channel]
+    if not chatChannel:
+        print('nope')
+        channels.append({'channelname': channel, 'chats': []})
+    else:
+        print(chatChannel)
+    emit("enter room", {"channel": channel}, broadcast=True)
+
+
