@@ -29,7 +29,6 @@ document.addEventListener('DOMContentLoaded', () => {
     $(displayNameForm ).on('submit', function(e){
          e.preventDefault();
          const displayName = $('#display-name').val();
-         console.log(displayName)
          $('#login-modal').modal('hide');
          $('#display-name').val('');
          localStorage.setItem('displayname', displayName);
@@ -43,14 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const channel = chatForm.dataset.channel;
             // set storage
             localStorage.setItem('channel', channel);
-            console.log(channel);
             const displayName = localStorage.getItem('displayname');
             $(chatForm ).on('submit', function(e){
                 e.preventDefault();
                 const chatText = $('#chat-text').val();
                 const newDate = new Date();
                 let timestamp = newDate.today() + " @ " + newDate.timeNow();
-                console.log(timestamp )
                 socket.emit('submit chat', {'chatText': chatText, 'channel': channel, 'displayName': displayName, 'timestamp': timestamp });
                 $('#chat-text').val('');
             });
@@ -61,14 +58,13 @@ document.addEventListener('DOMContentLoaded', () => {
         $(channelNameForm).on('submit', function(e){
              e.preventDefault();
              const roomName = $('#room-name').val();
-             console.log(roomName)
              $('#create-modal').modal('hide');
              $('#room-name').val('');
              socket.emit('create room', {'channel': roomName});
         });
     });
 
-    // When a new vote is announced, add to the unordered list
+    // When a new chat is announced - send to channel
     socket.on('display chats', data => {
         const li = document.createElement('li');
         li.innerHTML = `On <span class="timestamp">${data.timestamp}</span> <span class="username">${ data.displayName } </span> wrote <span class="message">${ data.chatText } </span>`;
@@ -78,10 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     });
 
-    // When a new vote is announced, add to the unordered list
+    // enter new room
     socket.on('enter room', data => {
         const channel = data["channel"];
-        console.log('channel' + channel);
         window.location.href = "/channel/" + channel;
     });
 

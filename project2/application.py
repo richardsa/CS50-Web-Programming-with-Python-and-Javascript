@@ -30,7 +30,6 @@ def chat(data):
     if len(chatChannel[0]['chats']) >= 100:
     	del chatChannel[0]['chats'][0]
     chatChannel[0]['chats'].append({"username": displayName, "message": chatText, "timestamp": timestamp})
-    print("Length : %d" % len (chatChannel[0]['chats']))
     emit("display chats", {"chatText": chatText, "displayName": displayName, "timestamp": timestamp}, broadcast=True)
 
 @socketio.on("create room")
@@ -38,10 +37,7 @@ def create(data):
     channel = data["channel"]
     chatChannel = [item for item in channels if item["channelname"] == channel]
     if not chatChannel:
-        print('nope')
         channels.append({'channelname': channel, 'chats': []})
-    else:
-        print(chatChannel)
     emit("enter room", {"channel": channel}, broadcast=True)
 
 
