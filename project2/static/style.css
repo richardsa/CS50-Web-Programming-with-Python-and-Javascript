@@ -3,11 +3,38 @@ body {
 }
 
 #chats {
-    border: 1px solid black;
+    padding-left:15px;
     height: 250px;
     overflow-y:auto;
+    position: relative;
+    /* border: solid 1px #ddd; */
+    box-shadow: 0 4px 6px 0 hsla(0, 0%, 0%, 0.2);
+    background: white;
+    margin: 20px 0 40px 0;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 
 li#previous-room {
   display: none;
+}
+
+ul {
+  list-style: none;
+}
+
+.timestamp {
+  text-decoration: underline;
+}
+
+.username {
+  font-weight:700;
+  color: green;
+}
+
+.message {
+ font-weight:700;
+ color: blue;
+ font-size:22px;
+}
 }

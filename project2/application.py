@@ -8,7 +8,7 @@ app = Flask(__name__)
 app.config["SECRET_KEY"] = os.getenv("SECRET_KEY")
 socketio = SocketIO(app)
 
-channels = [{"channelname": "Default", "chats": [{"username": "richie", "message": "hi"}]}, {"channelname": "Main", "chats": [{"username": "bob", "message": "yo"}]}]
+channels = [{"channelname": "Default", "chats": [{"username": "richie", "message": "Welcome to the default room! Feel free to chat here or start a new channel", "timestamp": "23/10/2018 @ 09:25:00"}]}, {"channelname": "Main", "chats": [{"username": "bob", "message": "yo", "timestamp": "23/10/2018 @ 09:25:00"}]}]
 
 
 @app.route("/")
@@ -25,9 +25,13 @@ def chat(data):
     chatText = data["chatText"]
     channel = data["channel"]
     displayName = data["displayName"]
+    timestamp = data["timestamp"]
     chatChannel = [item for item in channels if item["channelname"] == channel]
-    chatChannel[0]['chats'].append({"username": displayName, "message": chatText})
-    emit("display chats", {"chatText": chatText, "displayName": displayName}, broadcast=True)
+    if len(chatChannel[0]['chats']) >= 100:
+    	del chatChannel[0]['chats'][0]
+    chatChannel[0]['chats'].append({"username": displayName, "message": chatText, "timestamp": timestamp})
+    print("Length : %d" % len (chatChannel[0]['chats']))
+    emit("display chats", {"chatText": chatText, "displayName": displayName, "timestamp": timestamp}, broadcast=True)
 
 @socketio.on("create room")
 def create(data):
